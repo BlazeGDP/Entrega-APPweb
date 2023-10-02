@@ -1,0 +1,42 @@
+﻿@model Proyecto3_GuillermoDuque_AndresArteag.Models.IntegranteEquipo
+
+<h2>Crear Integrante de Equipo</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Identificacion, "Identificación")
+        @Html.TextBoxFor(model => model.Identificacion, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Identificacion)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nombre, "Nombre")
+        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Nombre)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Apellidos, "Apellidos")
+        @Html.TextBoxFor(model => model.Apellidos, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Apellidos)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Rol, "Rol dentro del emprendimiento")
+        @Html.TextBoxFor(model => model.Rol, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Rol)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, "Email")
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+    </div>
+}

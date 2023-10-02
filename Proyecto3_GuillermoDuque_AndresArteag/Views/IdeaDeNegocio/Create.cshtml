@@ -1,0 +1,132 @@
+﻿@model Proyecto3_GuillermoDuque_AndresArteag.Models.IdeaDeNegocio
+
+<h2>Crear Idea de Negocio</h2>
+
+@using (Html.BeginForm("CreateConDepartamento", "IdeaDeNegocio", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nombre, "Nombre")
+        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Nombre)
+    </div>
+
+    <div id="integrantesContainer">
+        
+    </div>
+
+    <button type="button" id="agregarIntegranteBtn" class="btn btn-primary">Agregar Integrante</button>
+
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script>
+        $(document).ready(function () {
+    var contadorIntegrantes = 0;
+
+    $('#agregarIntegranteBtn').click(function () {
+        contadorIntegrantes++;
+
+        
+        var integranteHtml = '<div class="integrante">';
+        integranteHtml += '<input type="text" class="form-control" name="Integrantes[' + contadorIntegrantes + '].Identificacion" placeholder="Identificación">';
+        integranteHtml += '<input type="text" class="form-control" name="Integrantes[' + contadorIntegrantes + '].Nombre" placeholder="Nombre">';
+        integranteHtml += '<input type="text" class="form-control" name="Integrantes[' + contadorIntegrantes + '].Apellidos" placeholder="Apellidos">';
+        integranteHtml += '<input type="text" class="form-control" name="Integrantes[' + contadorIntegrantes + '].Rol" placeholder="Rol">';
+        integranteHtml += '<input type="text" class="form-control" name="Integrantes[' + contadorIntegrantes + '].Email" placeholder="Email">';
+        integranteHtml += '</div>';
+
+        
+        $('#integrantesContainer').append(integranteHtml);
+
+        
+        var integrante = {
+            Identificacion: "",
+            Nombre: "",
+            Apellidos: "",
+            Rol: "",
+            Email: ""
+        };
+
+        
+        idea.IntegrantesEquipo.push(integrante);
+    });
+});
+
+    </script>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ImpactoSocialOEconomico, "Impacto Social o Económico")
+        @Html.TextBoxFor(model => model.ImpactoSocialOEconomico, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ImpactoSocialOEconomico)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ValorInversion, "Valor de Inversión")
+        @Html.TextBoxFor(model => model.ValorInversion, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ValorInversion)
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Nombre del Departamento que se beneficia")
+        <input type="text" class="form-control" name="NombreDepartamento" />
+    </div>
+    <input type="hidden" name="NombreDepartamentoHidden" id="NombreDepartamentoHidden" />
+
+    <script>
+        $(document).ready(function () {
+            $('#NombreDepartamento').blur(function () {
+                var nombreDepartamento = $(this).val();
+                $('#NombreDepartamentoHidden').val(nombreDepartamento);
+            });
+        });
+    </script>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IngresosPrimeros3Anios, "Ingresos Primeros 3 Años")
+        @Html.TextBoxFor(model => model.IngresosPrimeros3Anios, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.IngresosPrimeros3Anios)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Herramienta4RIUtilizada, "Herramienta 4RI Utilizada")
+        @Html.TextBoxFor(model => model.Herramienta4RIUtilizada, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Herramienta4RIUtilizada)
+    </div>
+
+    <script>
+    $(document).ready(function () {
+        
+        $('#impactoInput').on('input', function () {
+            var inputValue = $(this).val().toLowerCase();
+            $(this).val(inputValue);
+        });
+
+        
+        $('#herramientaInput').on('input', function () {
+            var inputValue = $(this).val().toLowerCase();
+            $(this).val(inputValue);
+        });
+    });
+</script>
+
+    
+
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+    </div>
+}
+<script>
+    @if (ViewBag.MostrarCodigoUnico != null && ViewBag.CodigoUnico != null)
+    {
+        <text>
+        $(document).ready(function() {
+            alert("Se ha generado un código único para la idea de negocio:\n\n@ViewBag.CodigoUnico");
+        });
+        </text>
+    }
+

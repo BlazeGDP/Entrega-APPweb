@@ -1,0 +1,18 @@
+﻿@model List<Proyecto3_GuillermoDuque_AndresArteag.Models.Departamento>
+
+<h2>Lista de Departamentos</h2>
+
+<table class="table">
+    <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+    </tr>
+    @foreach (var departamento in Model)
+    {
+        <tr>
+            <td>@departamento.Codigo</td>
+            <td>@departamento.Nombre</td>
+        </tr>
+    }
+</table>
+

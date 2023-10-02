@@ -1,0 +1,38 @@
+﻿
+@model Proyecto3_GuillermoDuque_AndresArteag.Models.IdeaDeNegocio
+
+@{
+    ViewBag.Title = "Detalles de Idea de Negocio";
+}
+
+<h2>Detalles de Idea de Negocio</h2>
+
+<table class="table">
+    <tr>
+        <th>Código</th>
+        <td>@Model.Codigo</td>
+    </tr>
+    <tr>
+        <th>Nombre</th>
+        <td>@Model.Nombre</td>
+    </tr>
+    <tr>
+        <th>Impacto Social o Económico</th>
+        <td>@Model.ImpactoSocialOEconomico</td>
+    </tr>
+    <tr>
+        <th>Valor de Inversión</th>
+        <td>@Model.ValorInversion</td>
+    </tr>
+    <tr>
+        <th>Ingresos Primeros 3 Años</th>
+        <td>@Model.IngresosPrimeros3Anios</td>
+    </tr>
+    <tr>
+        <th>Herramienta 4RI Utilizada</th>
+        <td>@Model.Herramienta4RIUtilizada</td>
+    </tr>
+</table>
+
+@Html.ActionLink("Volver a la Lista", "Index")
+

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Proyecto3_GuillermoDuque_AndresArteag.Models.IntegranteEquipo>
+
+<h2>Lista de Integrantes de Equipo</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Identificación
+        </th>
+       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Identificacion)
+            </td>
+         
+
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { /* Parámetros de ruta */ }) |
+                @Html.ActionLink("Eliminar", "Delete", new { /* Parámetros de ruta */ })
+            </td>
+        </tr>
+    }
+</table>

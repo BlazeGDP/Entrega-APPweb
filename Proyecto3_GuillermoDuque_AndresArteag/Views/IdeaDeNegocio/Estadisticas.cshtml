@@ -1,0 +1,53 @@
+﻿@model Proyecto3_GuillermoDuque_AndresArteag.Models.IdeaDeNegocio
+
+@{
+    ViewBag.Title = "Estadísticas";
+}
+
+<h2>Estadísticas</h2>
+
+@if (ViewBag.IdeaMayorImpacto != null)
+{
+    <h4>Idea de negocio con mayor impacto en departamentos:</h4>
+    <p>@ViewBag.IdeaMayorImpacto.Nombre</p>
+    @Html.ActionLink("Ver", "VerIdea", new { codigo = ViewBag.IdeaMayorImpacto.Codigo }, new { @class = "btn btn-primary" })
+}
+
+@if (ViewBag.IdeaMayorIngresos != null)
+{
+    <h4>Idea de negocio con mayor total de ingresos en los primeros 3 años:</h4>
+    <p>@ViewBag.IdeaMayorIngresos.Nombre</p>
+    @Html.ActionLink("Ver", "VerIdea", new { codigo = ViewBag.IdeaMayorIngresos.Codigo }, new { @class = "btn btn-primary" })
+}
+<h4>Las 3 Ideas de Negocio Más Rentables:</h4>
+<ul>
+    @foreach (var idea in ViewBag.IdeasMasRentables)
+    {
+        <li>@idea.Nombre - Rentabilidad: @idea.Rentabilidad</li>
+    }
+</ul>
+
+<h4>Suma Total de Ingresos de Todas las Ideas de Negocio: @ViewBag.SumaTotalIngresos</h4>
+<h4>Suma Total de Inversión en Todas las Ideas de Negocio: @ViewBag.SumaTotalInversion</h4>
+
+<h4>Ideas de Negocio con Inteligencia Artificial:</h4>
+<ul>
+    @foreach (var idea in ViewBag.IdeasConIA)
+    {
+        <li>@idea.Nombre</li>
+        @Html.ActionLink("Ver", "VerIdea", new { codigo = ViewBag.IdeaMayorImpacto.Codigo }, new { @class = "btn btn-primary" })
+    }
+</ul>
+
+<h4>Ideas de Negocio con "Desarrollo sostenible" en Impacto Social o Económico:</h4>
+<ul>
+    @foreach (var idea in ViewBag.IdeasDesarrolloSostenible)
+    {
+        <li>@idea.Nombre</li>
+        @Html.ActionLink("Ver", "VerIdea", new { codigo = ViewBag.IdeaMayorImpacto.Codigo }, new { @class = "btn btn-primary" })
+    }
+</ul>
+
+<div>
+    @Html.ActionLink("Volver a la Lista", "Index")
+</div>
